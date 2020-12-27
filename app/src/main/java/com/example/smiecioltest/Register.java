@@ -3,6 +3,7 @@ package com.example.smiecioltest;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,10 +14,17 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
@@ -82,20 +90,55 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                // User user = new User(firstName,lastName,email, gender, password, confirmPassword);
-
-
-                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(Register.this, "user created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        } else {
-                            Toast.makeText(Register.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
+                    public void onSuccess(AuthResult authResult) {
+                        FirebaseUser user = fAuth.getCurrentUser();
+                        Toast.makeText(Register.this, "User created", Toast.LENGTH_SHORT).show();
+                        DocumentReference df = db.collection("Users").document(user.getUid());
+                        Map<String, Object> userInfo= new HashMap<>();
+                        userInfo.put("FName",etFirstName.getText().toString());
+                        userInfo.put("LName",etLastName.getText().toString());
+                        userInfo.put("Email",etEmail.getText().toString());
+                        userInfo.put("Gender",sw_gender.getText().toString());
+
+                        userInfo.put("isAdmin", "1");
+
+                        df.set(userInfo);
+
+                       startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                       finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Register.this, "Error" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
+//                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            FirebaseUser user = fAuth.getCurrentUser();
+//                            Toast.makeText(Register.this, "User created", Toast.LENGTH_SHORT).show();
+//                            DocumentReference df = db.collection("Users").document(user.getUid());
+//                            Map<String, Object> userInfo= new HashMap<>();
+//                            userInfo.put("FName",etFirstName.getText().toString());
+//                            userInfo.put("LName",etLastName.getText().toString());
+//                            userInfo.put("Email",etEmail.getText().toString());
+//                            userInfo.put("Gender",sw_gender.getText().toString());
+//
+//                            userInfo.put("isUser", "1");
+//
+//                            df.set(userInfo);
+//
+//                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//                        } else {
+//                            Toast.makeText(Register.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
                 //db.collection("users").document(ID).set(user);
             }
         });
