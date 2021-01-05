@@ -18,7 +18,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class statystyki_fragment extends Fragment {
+public class MyProfile_fragment extends Fragment {
+
     TextView FName, email;
     FirebaseFirestore db;
     FirebaseAuth fAuth;
@@ -29,23 +30,21 @@ public class statystyki_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_statystyki_fragment, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_my_profile_fragment, container, false);
         return view;
-
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
-        email = getActivity().findViewById(R.id.tvRVEmail);
-        FName = getActivity().findViewById(R.id.tvRVFNameLName);
+        email = getActivity().findViewById(R.id.tv_email);
+        FName = getActivity().findViewById(R.id.tv_fName);
 
     }
+
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         fAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -55,15 +54,14 @@ public class statystyki_fragment extends Fragment {
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.getResult().exists()){
+                if (task.getResult().exists()) {
                     String emailResult = task.getResult().getString("Email");
-                    String nameResult =task.getResult().getString("FName");
+                    String nameResult = task.getResult().getString("FName");
 
                     email.setText(emailResult);
                     FName.setText(nameResult);
-                }
-                else{
-                    Intent intent= new Intent(getActivity(),Register.class);
+                } else {
+                    Intent intent = new Intent(getActivity(), Register.class);
                     startActivity(intent);
                 }
             }

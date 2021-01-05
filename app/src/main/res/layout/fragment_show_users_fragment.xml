@@ -6,9 +6,10 @@
     tools:context=".ShowUsers_fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewUser"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Show Users" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

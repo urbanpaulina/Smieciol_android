@@ -4,6 +4,10 @@
     tools:showIn="navigation_view"
     android:checkableBehavior="single">
     <item
+        android:id="@+id/my_profile"
+        android:icon="@drawable/ic_my_profile"
+        android:title="My Profile" />
+    <item
         android:id="@+id/statystyki"
         android:icon="@drawable/ic_statystyki"
         android:title="Statystyki" />
