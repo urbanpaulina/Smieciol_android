@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class statystyki_fragment extends Fragment {
     FirebaseAuth fAuth;
 
     String userId;
+    Button btn_xd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
