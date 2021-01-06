@@ -23,4 +23,5 @@
         android:id="@+id/show_users"
         android:title="Show Users"
         android:icon="@drawable/ic_show_users"/>
+
 </menu>
