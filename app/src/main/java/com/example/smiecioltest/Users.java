@@ -1,54 +1,58 @@
 package com.example.smiecioltest;
 
-import android.widget.ImageView;
-
 public class Users {
 
-    public String Fname, Lname, email;
-    public ImageView profileImage;
+    private String FName, LName, Email, isAdmin;
+    private String Gender;
 
-    public Users()
-    {
+    public Users(String FName, String LName, String email, String isAdmin, String gender) {
+        this.FName = FName;
+        this.LName = LName;
+        Email = email;
+        this.isAdmin = isAdmin;
+        Gender = gender;
+    }
+    public Users() {
 
     }
-
-    public Users(String name, String status, String image) {
-        this.Fname = Fname;
-        this.Lname = Lname;
-        this.email = email;
-        this.profileImage= profileImage;
+    public String getFName() {
+        return FName;
     }
 
-    public String getFname() {
-        return Fname;
-    }
-
-    public void setFname(String Fname) {
-        Fname = Fname;
-    }
-
-    public String getLname() {
-        return Lname;
-    }
-
-    public void setLname(String Lname) {
-
-        Lname = Lname;
+    public String getLName() {
+        return LName;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
+    }
+
+    public String getIsAdmin() {
+        return isAdmin;
+    }
+
+
+    public void setFName(String FName) {
+        this.FName = FName;
+    }
+
+    public void setLName(String LName) {
+        this.LName = LName;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        Email = email;
     }
 
-    public ImageView getProfileImage() {
-        return profileImage;
+    public void setGender(String gender) {
+        Gender = gender;
     }
 
-    public void setProfileImage(ImageView profileImage) {
-        this.profileImage = profileImage;
+    public void setIsAdmin(String isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public String getGender() {
+        return Gender;
     }
 }

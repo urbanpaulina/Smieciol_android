@@ -9,7 +9,12 @@ public class User {
     private String password;
     private String passwordConfirm;
 
-
+    public User(){
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.gender = true;
+    }
     public User(String firstName, String lastName, String email, boolean gender, String password, String passwordConfirm) {
         this.firstName = firstName;
         this.lastName = lastName;

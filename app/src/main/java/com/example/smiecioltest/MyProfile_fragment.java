@@ -40,7 +40,6 @@ public class MyProfile_fragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         email = getActivity().findViewById(R.id.tv_email);
         FName = getActivity().findViewById(R.id.tv_fName);
-
     }
 
     @Override
@@ -66,6 +65,5 @@ public class MyProfile_fragment extends Fragment {
                 }
             }
         });
-
     }
 }
