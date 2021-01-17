@@ -10,18 +10,24 @@
     <item
         android:id="@+id/statystyki"
         android:icon="@drawable/ic_statystyki"
-        android:title="Statystyki" />
+        android:title="Statistics" />
     <item
         android:id="@+id/oNas"
-        android:title="Wiadomosci"
+        android:title="Messages"
         android:icon="@drawable/ic_mail"/>
-    <item
-        android:id="@+id/log_out"
-        android:title="Log Out"
-        android:icon="@drawable/ic_logout"/>
+
     <item
         android:id="@+id/show_users"
         android:title="Show Users"
         android:icon="@drawable/ic_show_users"/>
+    <item
+        android:id="@+id/product_list"
+        android:title="Products"
+        android:icon="@drawable/produkty"/>
+    <item
+        android:id="@+id/log_out"
+        android:title="Log Out"
+        android:icon="@drawable/ic_logout"/>
+
 
 </menu>

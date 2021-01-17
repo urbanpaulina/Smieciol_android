@@ -7,10 +7,12 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="383dp"
-        android:layout_height="117dp"
+        android:layout_width="267dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />

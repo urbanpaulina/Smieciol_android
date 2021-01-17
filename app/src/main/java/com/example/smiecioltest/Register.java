@@ -68,13 +68,21 @@ public class Register extends AppCompatActivity {
                 String confirmPassword = etConfirmPassword.getText().toString().trim();
                 boolean gender = sw_gender.isChecked();
 
+                if (TextUtils.isEmpty(firstName)) {
+                    etFirstName.setError("First name is required");
+
+                }
+                if (TextUtils.isEmpty(lastName)) {
+                    etLastName.setError("Last name is required");
+
+                }
                 if (TextUtils.isEmpty(email)) {
                     etEmail.setError("Email is required");
-                    return;
+
                 }
                 if (TextUtils.isEmpty(password)) {
                     etPasswordcreate.setError("Password is required");
-                    return;
+
                 }
                 if (TextUtils.isEmpty(confirmPassword)) {
                     etConfirmPassword.setError("Password is required");

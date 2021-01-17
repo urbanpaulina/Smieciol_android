@@ -71,6 +71,9 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
             case R.id.show_users:
                 getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new ShowUsers_fragment()).commit();
                 break;
+            case R.id.product_list:
+                getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new Products_fragment()).commit();
+
 //            case R.id.bilety:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new bilety_fragment()).commit();
 //                break;

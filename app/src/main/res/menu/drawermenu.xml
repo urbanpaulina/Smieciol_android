@@ -10,10 +10,10 @@
     <item
         android:id="@+id/statystyki"
         android:icon="@drawable/ic_statystyki"
-        android:title="Statystyki" />
+        android:title="Statistics" />
     <item
         android:id="@+id/oNas"
-        android:title="Wiadomosci"
+        android:title="Messages"
         android:icon="@drawable/ic_mail"/>
     <item
         android:id="@+id/log_out"

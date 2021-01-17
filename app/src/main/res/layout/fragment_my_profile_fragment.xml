@@ -85,4 +85,14 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/dodaj_produkt"
+        app:backgroundTint="#009688"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="85dp"
+        android:text="Add product" />
+
 </LinearLayout>
