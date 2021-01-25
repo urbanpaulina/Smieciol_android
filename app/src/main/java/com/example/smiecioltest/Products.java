@@ -1,23 +1,41 @@
 package com.example.smiecioltest;
 
 public class Products {
-    public String product_name, weight;
+    public String barcode, id, name, weight;
 
     public Products(){
 
     }
 
-    public Products(String product_name, String weight) {
-        this.product_name = product_name;
+    public Products(String barcode, String id, String name, String weight) {
+        this.barcode = barcode;
+        this.id = id;
+        this.name = name;
         this.weight = weight;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getBarcode() {
+        return barcode;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getWeight() {

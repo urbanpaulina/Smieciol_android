@@ -29,6 +29,7 @@ public class ShowUsers_fragment extends Fragment {
 
         firebaseFirestore= FirebaseFirestore.getInstance();
         recyclerViewUsers= view.findViewById(R.id.recyclerViewUser);
+        recyclerViewUsers.setLayoutManager(new LinearLayoutManager(getContext()));
 
         Query query = firebaseFirestore.collection("Users").orderBy("Email");
 

@@ -37,7 +37,6 @@ public class statystyki_fragment extends Fragment {
 
     }
 
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 

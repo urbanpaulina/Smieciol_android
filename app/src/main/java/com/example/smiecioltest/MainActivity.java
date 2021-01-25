@@ -68,15 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                // getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new LogOut_fragment()).commit();
                 break;
-//            case R.id.kontakt:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new MapsActivity()).commit();
-//                break;
-//            case R.id.bilety:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new bilety_fragment()).commit();
-//                break;
-//            case R.id.galeria:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new galeria_fragment()).commit();
-//                break;
+//
         }
         mlayaut.closeDrawer(GravityCompat.START);
         return true;

@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,31 +25,23 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
 
 
 public class Products_fragment extends Fragment {
-     RecyclerView product_list;
-     DatabaseReference Product_Ref;
-     FirebaseAuth pAuth;
-     String productID;
-//     TextView name, weight;
-//     FirebaseFirestore db;
-//     FirebaseAuth fAuth;
-//     String productID;
+    RecyclerView product_list;
+    DatabaseReference Product_Ref;
+    FirebaseFirestore firebaseFirestore;
+    //FirebaseRecyclerAdapter adapter;
+    product_adapter product_adapter;
+
 
     public Products_fragment() {
         // Required empty public constructor
     }
 
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        name = getActivity().findViewById(R.id.tvRVName);
-//        weight = getActivity().findViewById(R.id.tvRVWeight);
-//
-//
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,11 +51,16 @@ public class Products_fragment extends Fragment {
 
         product_list= view.findViewById(R.id.product_list);
         product_list.setLayoutManager(new LinearLayoutManager(getContext()));
+        firebaseFirestore= FirebaseFirestore.getInstance();
 
-        pAuth = FirebaseAuth.getInstance();
-        productID= pAuth.getCurrentUser().getUid();
 
-        Product_Ref = FirebaseDatabase.getInstance().getReference().child("Products").child(productID);
+        FirebaseRecyclerOptions<Products> options =
+                new FirebaseRecyclerOptions.Builder<Products>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("products"), Products.class)
+                        .build();
+
+        product_adapter= new product_adapter(options);
+        product_list.setAdapter(product_adapter);
 
 
         return view;
@@ -70,45 +69,13 @@ public class Products_fragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(Product_Ref, Products.class)
-                .build();
-
-        final FirebaseRecyclerAdapter<Products, ProductsViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductsViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull Products model) {
-
-//                String productName = dataSnapshot.child("name").getValue().toString();
-//                String weight = dataSnapshot.child("status").getValue().toString();
-
-                holder.name.setText(model.getProduct_name());
-                holder.weight.setText(model.getWeight());
-
-            }
-
-            @NonNull
-            @Override
-            public ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products,parent,false);
-                ProductsViewHolder viewHolder = new ProductsViewHolder(view);
-                return viewHolder;
-            }
-        };
-        product_list.setAdapter(adapter);
-        adapter.startListening();
-
+        product_adapter.startListening();
     }
 
-
-    public static class ProductsViewHolder extends RecyclerView.ViewHolder{
-        TextView name, weight;
-
-        public ProductsViewHolder(@NonNull View itemView) {
-            super(itemView);
-            name= itemView.findViewById(R.id.product_name);
-            weight= itemView.findViewById(R.id.product_weight);
-        }
+    @Override
+    public void onStop() {
+        super.onStop();
+        product_adapter.stopListening();
     }
+
 }
