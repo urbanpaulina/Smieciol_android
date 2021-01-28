@@ -16,7 +16,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="252dp"
-        android:background="#009688"
+        android:background="#D1F8D1"
         android:text="      Welcome !"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#3CB371"
@@ -39,10 +39,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="296dp"
-
-        android:background="#009688"
+        android:background="#D1F8D1"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

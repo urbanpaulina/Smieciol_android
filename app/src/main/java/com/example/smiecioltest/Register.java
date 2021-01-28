@@ -43,7 +43,6 @@ public class Register extends AppCompatActivity {
         btn_createAccount = findViewById(R.id.btn_createAccount);
         etPasswordcreate = findViewById(R.id.etPasswordcreate);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        sw_gender = findViewById(R.id.sw_gender);
         btn_registered = findViewById(R.id.btn_registered);
 
 
@@ -61,7 +60,7 @@ public class Register extends AppCompatActivity {
                 String email = etEmail.getText().toString().trim();
                 String password = etPasswordcreate.getText().toString().trim();
                 String confirmPassword = etConfirmPassword.getText().toString().trim();
-                boolean gender = sw_gender.isChecked();
+
 
                 if (TextUtils.isEmpty(firstName)) {
                     etFirstName.setError("First name is required");
@@ -103,7 +102,7 @@ public class Register extends AppCompatActivity {
                         userInfo.put("FName",etFirstName.getText().toString());
                         userInfo.put("LName",etLastName.getText().toString());
                         userInfo.put("Email",etEmail.getText().toString());
-                        userInfo.put("Gender",sw_gender.getText().toString());
+
 
                         userInfo.put("isAdmin", "1");
 

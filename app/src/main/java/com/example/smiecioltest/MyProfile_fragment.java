@@ -53,7 +53,7 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
-        email = getActivity().findViewById(R.id.tv_email);
+        //email = getActivity().findViewById(R.id.tv_email);
         FName = getActivity().findViewById(R.id.tv_fName);
     }
 
@@ -69,10 +69,10 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.getResult().exists()) {
-                    String emailResult = task.getResult().getString("Email");
+                    //String emailResult = task.getResult().getString("Email");
                     String nameResult = task.getResult().getString("FName");
 
-                    email.setText(emailResult);
+                    //email.setText(emailResult);
                     FName.setText(nameResult);
                 } else {
                     Intent intent = new Intent(getActivity(), Register.class);
@@ -89,10 +89,10 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
 
         switch (v.getId()){
             case R.id.editProfile :
-                intent = new Intent(v.getContext(), Edit_profile.class);
-                //intent = new Intent(this,EditProfile_fragment.class);
-                startActivity(intent);
+                getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new EditProfile_fragment()).commit();
                 break;
+
+
 
         }
 
