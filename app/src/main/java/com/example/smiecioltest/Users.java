@@ -1,6 +1,9 @@
 package com.example.smiecioltest;
 
+import com.google.firebase.database.Exclude;
+
 public class Users {
+
 
     private String FName, LName, Email, isAdmin;
     private String Gender;

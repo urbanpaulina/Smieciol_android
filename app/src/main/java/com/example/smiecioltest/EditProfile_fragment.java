@@ -10,10 +10,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 
+
+import com.example.smiecioltest.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -21,14 +26,14 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class EditProfile_fragment extends Fragment {
+public class EditProfile_fragment extends Fragment implements View.OnClickListener {
 
-    TextView FName,LName,Email;
+    EditText FName, LName, Email;
+    Button updateButton;
     FirebaseFirestore db;
     FirebaseAuth fAuth;
-    //DatabaseReference
+    Users users;
     String userId;
-
 
 
     public EditProfile_fragment() {
@@ -46,17 +51,21 @@ public class EditProfile_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_profile_fragment, container, false);
+        View view= inflater.inflate(R.layout.fragment_edit_profile_fragment, container, false);
+        updateButton= view.findViewById(R.id.updateButton);
+        updateButton.setOnClickListener(this);
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
-        //email = getActivity().findViewById(R.id.tv_email);
+
         FName = getActivity().findViewById(R.id.etFirstName);
         LName = getActivity().findViewById(R.id.etLastName);
         Email = getActivity().findViewById(R.id.etEmail);
+
     }
 
     @Override
@@ -87,21 +96,59 @@ public class EditProfile_fragment extends Fragment {
         });
     }
 
-//    public void update(View view){
-//
-//        if(isFirstNameChange() || isLastNameChange() || isEmailChange()){
-//            //Toast.makeText(this,"Data has been updated", Toast.LENGTH_LONG).show();
-//            Toast.makeText(EditProfile_fragment.this.getActivity().getApplicationContext() , "Data has been updated", Toast.LENGTH_SHORT).show();
-//        }
-//
-//    }
-//
-//    private boolean isEmailChange() {
-//    }
-//
-//    private boolean isLastNameChange() {
-//    }
-//
-//    private boolean isFirstNameChange() {
-//    }
+
+    private boolean hasValidationErrors(String FirstName, String LastName, String email) {
+        if (FirstName.isEmpty()) {
+            FName.setError("First name required");
+            FName.requestFocus();
+            return true;
+        }
+
+        if (LastName.isEmpty()) {
+            LName.setError("Last name required");
+            LName.requestFocus();
+            return true;
+        }
+
+        if (email.isEmpty()) {
+            Email.setError("Email required");
+            Email.requestFocus();
+            return true;
+        }
+        return false;
+    }
+
+    public void updateUsers() {
+        String FirstName = FName.getText().toString().trim();
+        String LastName = LName.getText().toString().trim();
+        String email = Email.getText().toString().trim();
+
+        if (!hasValidationErrors(FirstName, LastName, email)) {
+
+            //Users users = new Users();
+            
+            db.collection("Users").document(userId)
+                    .update(
+                            "FName", FirstName,
+                            "LName", LastName,
+                            "Email", email
+
+                    )
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(EditProfile_fragment.this.getActivity().getApplicationContext(), "Data has been updated", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.updateButton:
+                updateUsers();
+                break;
+        }
+    }
 }
