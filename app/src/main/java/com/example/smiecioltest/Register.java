@@ -104,7 +104,7 @@ public class Register extends AppCompatActivity {
                         userInfo.put("Email",etEmail.getText().toString());
 
 
-                        userInfo.put("isAdmin", "1");
+                        userInfo.put("isAdmin", null);
 
                         df.set(userInfo);
 

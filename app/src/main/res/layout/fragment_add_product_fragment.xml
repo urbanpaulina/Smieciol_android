@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#D1F8D1"
-    tools:context=".EditProfile_fragment">
-
+    android:orientation="vertical"
+    tools:context=".AddProduct_fragment">
 
 
     <ImageView
-        android:id="@+id/editProfile_naglowek"
+        android:id="@+id/addProduct_naglowek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:src="@drawable/editprofile" />
+        android:src="@drawable/add_product" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,13 +22,13 @@
         android:background="#D1F8D1">
 
         <TextView
-            android:id="@+id/txt_FName"
+            android:id="@+id/txt_Name"
             android:layout_width="212dp"
             android:layout_height="41dp"
             android:layout_marginStart="70dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="179dp"
-            android:text="First name"
+            android:text="Name"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -39,90 +38,90 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/etFirstName"
+            android:id="@+id/etName"
             android:layout_width="279dp"
             android:layout_height="50dp"
             android:layout_marginStart="70dp"
             android:layout_marginEnd="112dp"
             android:background="@drawable/frame"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:padding="10dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.323"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_FName" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_Name" />
 
         <TextView
-            android:id="@+id/txtLName"
+            android:id="@+id/txtWeight"
             android:layout_width="212dp"
             android:layout_height="41dp"
             android:layout_marginStart="70dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="179dp"
-            android:text="Last name"
+            android:text="Weight (g)"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.323"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
+            app:layout_constraintTop_toBottomOf="@+id/etName" />
 
         <EditText
-            android:id="@+id/etLastName"
-            android:layout_width="283dp"
+            android:id="@+id/etWeight"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginStart="70dp"
-            android:layout_marginEnd="112dp"
+            android:layout_marginEnd="245dp"
             android:background="@drawable/frame"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:padding="10dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.305"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtLName" />
+            app:layout_constraintTop_toBottomOf="@+id/txtWeight" />
 
         <TextView
-            android:id="@+id/txtEmail"
+            android:id="@+id/txtBarcode"
             android:layout_width="212dp"
             android:layout_height="41dp"
             android:layout_marginStart="70dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="179dp"
-            android:text="E-mail"
+            android:text="Barcode"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.323"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etLastName" />
+            app:layout_constraintTop_toBottomOf="@+id/etWeight" />
 
         <EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etBarcode"
             android:layout_width="283dp"
             android:layout_height="50dp"
             android:layout_marginStart="70dp"
             android:layout_marginEnd="112dp"
             android:background="@drawable/frame"
-            android:inputType="textEmailAddress"
+            android:inputType="number"
             android:padding="10dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.305"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/txtBarcode" />
 
         <Button
-            android:id="@+id/updateButton"
+            android:id="@+id/addButton"
             android:layout_width="127dp"
             android:layout_height="52dp"
             android:layout_marginStart="133dp"
             android:layout_marginTop="45dp"
             android:layout_marginEnd="151dp"
-            android:text="UPDATE"
+            android:text="ADD"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -130,7 +129,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEmail" />
-
+            app:layout_constraintTop_toBottomOf="@+id/etBarcode" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

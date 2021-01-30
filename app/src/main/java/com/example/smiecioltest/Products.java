@@ -3,16 +3,19 @@ package com.example.smiecioltest;
 public class Products {
     public String barcode, id, name, weight;
 
+
     public Products(){
 
     }
 
-    public Products(String barcode, String id, String name, String weight) {
+    public Products(String name, String weight, String barcode){
         this.barcode = barcode;
-        this.id = id;
+        //this.id = id;
         this.name = name;
         this.weight = weight;
     }
+
+
 
     public String getBarcode() {
         return barcode;

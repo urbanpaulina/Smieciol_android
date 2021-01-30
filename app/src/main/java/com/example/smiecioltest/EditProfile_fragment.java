@@ -32,7 +32,6 @@ public class EditProfile_fragment extends Fragment implements View.OnClickListen
     Button updateButton;
     FirebaseFirestore db;
     FirebaseAuth fAuth;
-    Users users;
     String userId;
 
 

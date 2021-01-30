@@ -93,7 +93,7 @@ public class Login extends AppCompatActivity {
                 Log.d("TAG", "onSuccess: "+ documentSnapshot.getData());
                 //identify the user access level
 
-                if(documentSnapshot.getString("isAdmin")!=null){
+                if(documentSnapshot.getString("isAdmin")!= null){
                         //user is admin
                     startActivity(new Intent(getApplicationContext(), Admin.class));//----------------
                     finish();
