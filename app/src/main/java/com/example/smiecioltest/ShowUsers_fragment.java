@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,12 +16,17 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class ShowUsers_fragment extends Fragment {
     RecyclerView recyclerViewUsers;
     FirebaseFirestore firebaseFirestore;
     FirestoreRecyclerAdapter adapter;
-
+    FirebaseStorage storage;
+    StorageReference storageReference;
+    ImageView ProfilePhoto;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,6 +36,8 @@ public class ShowUsers_fragment extends Fragment {
         firebaseFirestore= FirebaseFirestore.getInstance();
         recyclerViewUsers= view.findViewById(R.id.recyclerViewUser);
         recyclerViewUsers.setLayoutManager(new LinearLayoutManager(getContext()));
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
         Query query = firebaseFirestore.collection("Users").orderBy("Email");
 
@@ -54,6 +62,8 @@ public class ShowUsers_fragment extends Fragment {
                 holder.FName_user.setText(model.getFName());
                 holder.LName_user.setText(model.getLName());
                 holder.Email_user.setText(model.getEmail());
+                Picasso.get().load(model.getProfilePhoto()).placeholder(R.drawable.ic_my_profile).into(holder.ProfilePhoto);
+
                 System.out.println(model.getFName());
 
             }
@@ -63,13 +73,13 @@ public class ShowUsers_fragment extends Fragment {
         recyclerViewUsers.setAdapter(adapter);
 
 
-
         return view;
     }
     public class UserViewHolder extends RecyclerView.ViewHolder{
         TextView FName_user;
         TextView LName_user;
         TextView Email_user;
+        ImageView ProfilePhoto;
 
 
         public UserViewHolder(@NonNull View itemView){
@@ -78,6 +88,7 @@ public class ShowUsers_fragment extends Fragment {
             FName_user = itemView.findViewById(R.id.FName_user);
             LName_user = itemView.findViewById(R.id.LName_user);
             Email_user = itemView.findViewById(R.id.Email_user);
+            ProfilePhoto = itemView.findViewById(R.id.ProfilePhoto);
         }
     }//UserViewHolder
 

@@ -13,6 +13,18 @@
         android:layout_height="wrap_content"
         android:src="@drawable/products" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="39dp"
+        android:text="NAME       WEIGHT(g)"
+        android:textColor="#40CC52"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_list"
         android:layout_width="match_parent"

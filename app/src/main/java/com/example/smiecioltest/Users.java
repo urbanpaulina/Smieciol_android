@@ -5,19 +5,29 @@ import com.google.firebase.database.Exclude;
 public class Users {
 
 
-    private String FName, LName, Email, isAdmin;
+    private String FName, LName, Email, isAdmin,ProfilePhoto;
     private String Gender;
 
-    public Users(String FName, String LName, String email, String isAdmin, String gender) {
+    public Users(String FName, String LName, String email, String isAdmin, String gender,String ProfileProduct) {
         this.FName = FName;
         this.LName = LName;
         Email = email;
         this.isAdmin = isAdmin;
+        ProfilePhoto=ProfileProduct;
         Gender = gender;
     }
     public Users() {
 
     }
+
+    public String getProfilePhoto() {
+        return ProfilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        ProfilePhoto = profilePhoto;
+    }
+
     public String getFName() {
         return FName;
     }

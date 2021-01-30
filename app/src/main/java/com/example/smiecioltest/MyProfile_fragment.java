@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,12 +20,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class MyProfile_fragment extends Fragment implements View.OnClickListener {
 
-    TextView FName, email;
+    TextView FName;
+    ImageView ProfilePhoto;
     FirebaseFirestore db;
     FirebaseAuth fAuth;
+    FirebaseStorage storage;
+    StorageReference storageReference;
     String userId;
     //GridLayout mainGrid;
     CardView card1,card2,card3,card4;
@@ -53,8 +60,9 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
-        //email = getActivity().findViewById(R.id.tv_email);
+
         FName = getActivity().findViewById(R.id.tv_fName);
+        ProfilePhoto = getActivity().findViewById(R.id.profilePhoto);
     }
 
     @Override
@@ -63,6 +71,8 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
         fAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
         DocumentReference documentReference = db.collection("Users").document(userId);
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -71,9 +81,12 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
                 if (task.getResult().exists()) {
                     //String emailResult = task.getResult().getString("Email");
                     String nameResult = task.getResult().getString("FName");
+                    String photoResult = task.getResult().getString("ProfilePhoto");
 
-                    //email.setText(emailResult);
+
                     FName.setText(nameResult);
+                    Picasso.get().load(photoResult).placeholder(R.drawable.ic_my_profile).into(ProfilePhoto);
+
                 } else {
                     Intent intent = new Intent(getActivity(), Register.class);
                     startActivity(intent);
@@ -81,6 +94,15 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
             }
         });
     }
+
+//
+//    StorageReference mountainImagesRef = storageReference.child("images/");
+//
+//// While the file names are the same, the references point to different files
+//mountainsRef.getName().equals(mountainImagesRef.getName());    // true
+//mountainsRef.getPath().equals(mountainImagesRef.getPath());    // false
+
+
 
     @Override
     public void onClick(View v) {
