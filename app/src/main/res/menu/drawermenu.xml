@@ -16,6 +16,10 @@
         android:title="Messages"
         android:icon="@drawable/ic_mail"/>
     <item
+        android:id="@+id/product_list"
+        android:title="Products"
+        android:icon="@drawable/produkty"/>
+    <item
         android:id="@+id/log_out"
         android:title="Log Out"
         android:icon="@drawable/ic_logout"/>

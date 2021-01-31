@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D1F8D1"
+    android:orientation="vertical"
+    tools:context=".ScanReceipt_fragment">
+
+    <ImageView
+        android:id="@+id/scanReceipt_naglowek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/scanbarcode" />
+
+    <com.otaliastudios.cameraview.CameraView
+        android:id="@+id/cameraview"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="100dp" />
+
+    <Button
+        android:id="@+id/scan"
+        android:layout_width="127dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="151dp"
+        android:text="SCAN"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="#40CC52" />
+
+</LinearLayout>

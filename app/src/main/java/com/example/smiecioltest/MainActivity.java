@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.oNas:
                 getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new onas_ragment()).commit();
                 break;
+            case R.id.product_list:
+                getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new Products_fragment()).commit();
+                break;
             case R.id.log_out:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));

@@ -3,19 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".onas_ragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
+    android:background="#D1F8D1"
+    tools:context=".Ranking_fragment">
 
     <ImageView
-        android:id="@+id/messages_naglowek"
+        android:id="@+id/Ranking_naglowek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:src="@drawable/messages" />
-
-
+        android:src="@drawable/rankingg" />
 
 </LinearLayout>

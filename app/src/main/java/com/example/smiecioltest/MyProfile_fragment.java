@@ -44,13 +44,13 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
 
         card1= view.findViewById(R.id.editProfile);
         card2= view.findViewById(R.id.addProduct);
-//        card3= view.findViewById(R.id.scanReceipts);
-//        card4= view.findViewById(R.id.ranking);
+        card3= view.findViewById(R.id.scanReceipts);
+        card4= view.findViewById(R.id.ranking);
 
         card1.setOnClickListener(this);
         card2.setOnClickListener(this);
-//        card3.setOnClickListener(this);
-//        card4.setOnClickListener(this);
+        card3.setOnClickListener(this);
+        card4.setOnClickListener(this);
 
 
         return view;
@@ -115,6 +115,12 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
                 break;
             case R.id.addProduct :
                 getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AddProduct_fragment()).commit();
+                break;
+            case R.id.scanReceipts :
+                getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new ScanReceipt_fragment()).commit();
+                break;
+            case R.id.ranking :
+                getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new Ranking_fragment()).commit();
                 break;
 
 

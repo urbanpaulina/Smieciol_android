@@ -1,31 +1,15 @@
 package com.example.smiecioltest;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 public class statystyki_fragment extends Fragment {
-    TextView FName, email;
-    FirebaseFirestore db;
-    FirebaseAuth fAuth;
 
-    String userId;
-    Button btn_xd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,34 +25,13 @@ public class statystyki_fragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
-        email = getActivity().findViewById(R.id.tvRVEmail);
-        FName = getActivity().findViewById(R.id.tvRVFNameLName);
+
 
     }
     @Override
     public void onStart(){
         super.onStart();
-        fAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
-        userId = fAuth.getCurrentUser().getUid();
 
-        DocumentReference documentReference = db.collection("Users").document(userId);
-        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.getResult().exists()){
-                    String emailResult = task.getResult().getString("Email");
-                    String nameResult =task.getResult().getString("FName");
-
-                    email.setText(emailResult);
-                    FName.setText(nameResult);
-                }
-                else{
-                    Intent intent= new Intent(getActivity(),Register.class);
-                    startActivity(intent);
-                }
-            }
-        });
 
     }
 }

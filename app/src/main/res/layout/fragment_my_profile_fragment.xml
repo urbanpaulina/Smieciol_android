@@ -192,13 +192,13 @@
 
 
                 <TextView
-                    android:text="Scan receipts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scan barcode"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

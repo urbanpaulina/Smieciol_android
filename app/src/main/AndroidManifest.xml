@@ -3,14 +3,24 @@
     package="com.example.smiecioltest">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
+
+
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Śmiecioł"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Smiecioltest">
+
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="barcode" />
+
         <activity android:name=".model.mainGrid.Edit_profile" />
         <activity android:name=".Admin" />
         <activity android:name=".Start">
@@ -23,7 +33,7 @@
         <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity">
-            android:theme="@style/Theme.Smiecioltest.NoActionBar"
+                  android:theme="@style/Theme.Smiecioltest.NoActionBar"
         </activity>
     </application>
 

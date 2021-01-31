@@ -11,32 +11,11 @@
         android:id="@+id/statistics_naglowek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/statistics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvRVEmail"
-        android:layout_width="258dp"
-        android:layout_height="26dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="48dp" />
 
-    <TextView
-        android:id="@+id/tvRVFNameLName"
-        android:layout_width="258dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="137dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRVEmail" />
 </LinearLayout>
