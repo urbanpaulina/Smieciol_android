@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,9 +43,9 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
                     new MyProfile_fragment()).commit();
             navigationView.setCheckedItem(R.id.my_profile);
         }
-        onas_ragment onas_fragmentt = new onas_ragment();
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().add(R.id.Fragment_container, onas_fragmentt);
+        //onas_ragment onas_fragmentt = new onas_ragment();
+        //FragmentManager fm = getSupportFragmentManager();
+        //fm.beginTransaction().add(R.id.Fragment_container, onas_fragmentt);
 
 
     }
@@ -58,9 +57,6 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
                 break;
             case R.id.statystyki:
                 getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new statystyki_fragment()).commit();
-                break;
-            case R.id.oNas:
-                getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new onas_ragment()).commit();
                 break;
             case R.id.log_out:
                 FirebaseAuth.getInstance().signOut();

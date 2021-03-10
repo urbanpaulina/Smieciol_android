@@ -17,7 +17,7 @@
     <com.otaliastudios.cameraview.CameraView
         android:id="@+id/cameraview"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="366dp"
         android:layout_marginTop="100dp" />
 
     <Button

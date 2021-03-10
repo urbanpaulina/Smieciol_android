@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D1F8D1"
+    android:background="#FFFFFF"
     tools:context=".Register">
 
     <ScrollView
@@ -21,15 +21,15 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="356dp"
-                android:layout_height="119dp"
+                android:layout_width="wrap_content"
+                android:layout_height="190dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="27dp"
                 android:layout_marginLeft="27dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="28dp"
                 android:layout_marginRight="28dp"
-                app:srcCompat="@drawable/transparent" />
+                app:srcCompat="@drawable/logo" />
 
             <TextView
                 android:id="@+id/textView"
@@ -182,6 +182,10 @@
                 android:layout_marginRight="100dp"
                 android:rotationX="4"
                 android:text="Create Account"
+                android:background="@drawable/corners"
+                android:textColor="#FFFFFF"
+                android:textSize="16dp"
+                android:textStyle="bold"
                 app:backgroundTint="#009688" />
 
             <Button
@@ -190,9 +194,15 @@
                 android:layout_height="wrap_content"
                 android:text="Already existed?"
                 android:layout_marginLeft="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginRight="100dp"
                 android:visibility="visible"
                 app:backgroundTint="#40CC52"
+                android:background="@drawable/corners"
+                android:textColor="#FFFFFF"
+                android:textSize="16dp"
+                android:textStyle="bold"
                 tools:visibility="visible" />
 
 

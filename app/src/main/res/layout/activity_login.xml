@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#FFFFFF"
     tools:context=".Login">
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_width="212dp"
         android:layout_height="41dp"
         android:layout_marginStart="90dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="159dp"
         android:text="Login"
         android:textColor="@color/black"
@@ -89,9 +89,12 @@
         android:layout_width="176dp"
         android:layout_height="50dp"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="160dp"
+        android:background="@drawable/corners"
         android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
         android:textStyle="bold"
         app:backgroundTint="#40CC52"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,7 +113,10 @@
         android:layout_marginEnd="161dp"
         android:layout_marginRight="161dp"
         android:text="CREATE"
+        android:textSize="16dp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
+        android:background="@drawable/corners"
         app:backgroundTint="#009688"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,17 +124,15 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="321dp"
-        android:layout_height="108dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="310dp"
+        android:layout_height="199dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/transparent" />
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -122,9 +122,10 @@
             android:layout_marginTop="45dp"
             android:layout_marginEnd="151dp"
             android:text="ADD"
-            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:background="@drawable/corners"
+            android:textColor="#FFFFFF"
             app:backgroundTint="#40CC52"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -132,4 +133,4 @@
             app:layout_constraintTop_toBottomOf="@+id/etBarcode" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</LinearLayout>

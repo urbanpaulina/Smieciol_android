@@ -11,10 +11,7 @@
         android:id="@+id/statystyki"
         android:icon="@drawable/ic_statystyki"
         android:title="Statistics" />
-    <item
-        android:id="@+id/oNas"
-        android:title="Messages"
-        android:icon="@drawable/ic_mail"/>
+
     <item
         android:id="@+id/product_list"
         android:title="Products"

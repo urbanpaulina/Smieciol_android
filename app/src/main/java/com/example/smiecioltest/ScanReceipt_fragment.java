@@ -37,11 +37,11 @@ import java.util.List;
 
 public class ScanReceipt_fragment extends Fragment implements LifecycleObserver {
 
-     CameraView cameraView;
-     Button scan;
-     boolean isDetected = false;
-     FirebaseVisionBarcodeDetectorOptions options;
-     FirebaseVisionBarcodeDetector detector;
+    CameraView cameraView;
+    Button scan;
+    boolean isDetected = false;
+    FirebaseVisionBarcodeDetectorOptions options;
+    FirebaseVisionBarcodeDetector detector;
 
 
     public ScanReceipt_fragment() {
@@ -108,14 +108,14 @@ public class ScanReceipt_fragment extends Fragment implements LifecycleObserver 
         });
     }
 
-       private void processImage(FirebaseVisionImage image){
+    private void processImage(FirebaseVisionImage image){
         if(!isDetected)
         {
             detector.detectInImage(image)
                     .addOnSuccessListener(new OnSuccessListener<List<FirebaseVisionBarcode>>() {
                         @Override
                         public void onSuccess(List<FirebaseVisionBarcode> firebaseVisionBarcodes) {
-                         processResult(firebaseVisionBarcodes);
+                            processResult(firebaseVisionBarcodes);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -127,72 +127,72 @@ public class ScanReceipt_fragment extends Fragment implements LifecycleObserver 
 
 
         }
-       }
+    }
 
-       private void processResult(List<FirebaseVisionBarcode> firebaseVisionBarcodes){
-          if(firebaseVisionBarcodes.size()>0){
-              isDetected=true;
-              scan.setEnabled(isDetected);
-              for (FirebaseVisionBarcode item: firebaseVisionBarcodes){
-                  int value_type = item.getValueType();
-                  switch (value_type)
-                  {
-                      case FirebaseVisionBarcode.TYPE_TEXT:
-                      {
-                          createDialog(item.getRawValue());
-                      }
-                      break;
+    private void processResult(List<FirebaseVisionBarcode> firebaseVisionBarcodes){
+        if(firebaseVisionBarcodes.size()>0){
+            isDetected=true;
+            scan.setEnabled(isDetected);
+            for (FirebaseVisionBarcode item: firebaseVisionBarcodes){
+                int value_type = item.getValueType();
+                switch (value_type)
+                {
+                    case FirebaseVisionBarcode.TYPE_TEXT:
+                    {
+                        createDialog(item.getRawValue());
+                    }
+                    break;
 
-                      case FirebaseVisionBarcode.TYPE_URL:
-                      {
-                          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getRawValue()));
-                          startActivity(intent);
-                      }
-                      break;
-                      case FirebaseVisionBarcode.TYPE_CONTACT_INFO:
-                      {
-                          String info = new StringBuilder("Product name: ")
-                                  .append(item.getContactInfo().getName().getFormattedName())
-                                  .toString();
-                          createDialog(info);
+                    case FirebaseVisionBarcode.TYPE_URL:
+                    {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getRawValue()));
+                        startActivity(intent);
+                    }
+                    break;
+                    case FirebaseVisionBarcode.TYPE_CONTACT_INFO:
+                    {
+                        String info = new StringBuilder("Product name: ")
+                                .append(item.getContactInfo().getName().getFormattedName())
+                                .toString();
+                        createDialog(info);
 
-                      }
-                      break;
-                      default:
-                          break;
+                    }
+                    break;
+                    default:
+                        break;
 
-                  }
-              }
-          }
-       }
-
-       private void createDialog(String text){
-           AlertDialog.Builder builder= new AlertDialog.Builder(ScanReceipt_fragment.this.getActivity().getApplicationContext());
-           builder.setMessage(text)
-                   .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                       @Override
-                       public void onClick(DialogInterface dialogInterface, int which) {
-                           dialogInterface.dismiss();
-
-                       }
-                   });
-           AlertDialog dialog =builder.create();
-           dialog.show();
-       }
-
-
-
-        private FirebaseVisionImage getVisionImageFromFrame(Frame frame){
-            byte[] data =frame.getData();
-            FirebaseVisionImageMetadata metadata = new FirebaseVisionImageMetadata.Builder()
-                    .setFormat(FirebaseVisionImageMetadata.IMAGE_FORMAT_NV21)
-                    .setHeight(frame.getSize().getHeight())
-                    .setWidth(frame.getSize().getWidth())
-                    .build();
-                    //.setRotation(frame.getRotation())
-
-            return FirebaseVisionImage.fromByteArray(data,metadata);
+                }
+            }
         }
+    }
+
+    private void createDialog(String text){
+        AlertDialog.Builder builder= new AlertDialog.Builder(ScanReceipt_fragment.this.getActivity().getApplicationContext());
+        builder.setMessage(text)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        dialogInterface.dismiss();
+
+                    }
+                });
+        AlertDialog dialog =builder.create();
+        dialog.show();
+    }
+
+
+
+    private FirebaseVisionImage getVisionImageFromFrame(Frame frame){
+        byte[] data =frame.getData();
+        FirebaseVisionImageMetadata metadata = new FirebaseVisionImageMetadata.Builder()
+                .setFormat(FirebaseVisionImageMetadata.IMAGE_FORMAT_NV21)
+                .setHeight(frame.getSize().getHeight())
+                .setWidth(frame.getSize().getWidth())
+                .build();
+        //.setRotation(frame.getRotation())
+
+        return FirebaseVisionImage.fromByteArray(data,metadata);
+    }
 
 
 }

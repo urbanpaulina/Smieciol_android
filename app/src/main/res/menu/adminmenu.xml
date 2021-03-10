@@ -7,15 +7,12 @@
     <item
         android:id="@+id/my_profile"
         android:icon="@drawable/ic_my_profile"
-        android:title="My Profile" />
+        android:title="My Profile"
+        android:textStyle="bold"/>
     <item
         android:id="@+id/statystyki"
         android:icon="@drawable/ic_statystyki"
         android:title="Statistics" />
-    <item
-        android:id="@+id/oNas"
-        android:title="Messages"
-        android:icon="@drawable/ic_mail"/>
 
     <item
         android:id="@+id/show_users"
@@ -32,3 +29,4 @@
 
 
 </menu>
+
