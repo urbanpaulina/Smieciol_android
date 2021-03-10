@@ -24,7 +24,8 @@ import java.util.Map;
 
 import static android.content.ContentValues.TAG;
 
-public class AddProduct_fragment extends Fragment implements View.OnClickListener {
+public class AddProductUser_fragment extends Fragment implements View.OnClickListener {
+
 
     EditText NameProduct, WeightProduct,Barcode;
     Button addProduct;
@@ -34,7 +35,7 @@ public class AddProduct_fragment extends Fragment implements View.OnClickListene
     String productId;
 
 
-    public AddProduct_fragment() {
+    public AddProductUser_fragment() {
         // Required empty public constructor
     }
 
@@ -94,7 +95,7 @@ public class AddProduct_fragment extends Fragment implements View.OnClickListene
             Barcode.setError("Barcode must have 12 numbers");
             return true;
         }
-       return false;
+        return false;
     }
 
     public  void addproduct() {
@@ -114,7 +115,7 @@ public class AddProduct_fragment extends Fragment implements View.OnClickListene
             Product_Ref.push().setValue(products);
 
 
-            Toast.makeText(AddProduct_fragment.this.getActivity().getApplicationContext(), "Product has been added", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddProductUser_fragment.this.getActivity().getApplicationContext(), "Product has been added", Toast.LENGTH_SHORT).show();
 
 
         }
@@ -123,13 +124,13 @@ public class AddProduct_fragment extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
 
-       addproduct();
+        addproduct();
         Map<String, Object> product = new HashMap<>();
         product.put("name", NameProduct.getText().toString());
         product.put("weight", WeightProduct.getText().toString());
         product.put("barcode", Barcode.getText().toString());
 
-        db.collection("Products").document()
+        db.collection("ProductsToAcceptation").document()
                 .set(product)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -145,27 +146,5 @@ public class AddProduct_fragment extends Fragment implements View.OnClickListene
                 });
     }
 
-//    private void checkUserAccessLevel(String uid){
-//        DocumentReference df = db.collection("Users").document(uid);
-//
-//        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                Log.d("TAG", "onSuccess: "+ documentSnapshot.getData());
-//                //identify the user access level
-//
-//                if(documentSnapshot.getString("isAdmin")== null){
-//                    //user is admin
-//
-//                }
-//
-//                else  {
-//                   // startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//                }
-//            }
-//        });
-//    }
+
 }
-
-
-

@@ -2,10 +2,10 @@ package com.example.smiecioltest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +15,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -114,7 +115,8 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
                 getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new EditProfile_fragment()).commit();
                 break;
             case R.id.addProduct :
-                getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AddProduct_fragment()).commit();
+                checkUserAccessLevel(userId);
+                //getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AddProduct_fragment()).commit();
                 break;
             case R.id.scanReceipts :
                 getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new ScanReceipt_fragment()).commit();
@@ -126,5 +128,27 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
 
         }
 
+    }
+
+    private void checkUserAccessLevel(String uid){
+        DocumentReference df = db.collection("Users").document(uid);
+
+        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Log.d("TAG", "onSuccess: "+ documentSnapshot.getData());
+                //identify the user access level
+
+                if(documentSnapshot.getString("isAdmin")== null){
+                    //user is not admin
+                    getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AddProductUser_fragment()).commit();
+
+                }
+
+                else  {
+
+                }
+            }
+        });
     }
 }
