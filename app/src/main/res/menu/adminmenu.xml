@@ -24,7 +24,7 @@
         android:icon="@drawable/produkty"/>
     <item
         android:id="@+id/product_to_acceptation_list"
-        android:title="Products to aceptation"
+        android:title="Products for approval"
         android:icon="@drawable/produkty"/>
     <item
         android:id="@+id/log_out"
