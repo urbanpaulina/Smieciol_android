@@ -23,6 +23,10 @@
         android:title="Products"
         android:icon="@drawable/produkty"/>
     <item
+        android:id="@+id/product_to_acceptation_list"
+        android:title="Products to aceptation"
+        android:icon="@drawable/produkty"/>
+    <item
         android:id="@+id/log_out"
         android:title="Log Out"
         android:icon="@drawable/ic_logout"/>
