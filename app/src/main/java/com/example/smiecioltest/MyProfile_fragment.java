@@ -125,7 +125,6 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
                 getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new Ranking_fragment()).commit();
                 break;
 
-
         }
 
     }
@@ -144,9 +143,8 @@ public class MyProfile_fragment extends Fragment implements View.OnClickListener
                     getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AddProductUser_fragment()).commit();
 
                 }
-
-                else  {
-
+                else{
+                    getFragmentManager().beginTransaction().replace(R.id.Fragment_container,new AddProduct_fragment()).commit();
                 }
             }
         });
